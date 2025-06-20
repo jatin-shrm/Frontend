@@ -1,7 +1,9 @@
 import React from "react";
+import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 interface RegisterFormProps {
-    email: string;
+  email: string;
   username: string;
   fullname: string;
   password: string;
@@ -24,17 +26,21 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
   return (
     <form
       onSubmit={onSubmit}
-      className="max-w-sm mx-auto p-4 border rounded shadow space-y-4"
+      className="w-full max-w-lg mx-auto p-8 bg-white/90 rounded-2xl shadow-2xl space-y-6 animate-fade-in"
     >
-      <h2 className="text-xl font-semibold text-center">Register</h2>
+      <div className="flex flex-col items-center mb-4">
+        <FaUserCircle className="text-5xl text-blue-500 mb-2 drop-shadow" />
+        <h2 className="text-2xl font-bold text-gray-800">Nice to meet you!</h2>
+        <p className="text-sm text-gray-500">Create your account</p>
+      </div>
 
       {error && (
-        <div className="bg-red-100 text-red-700 p-2 rounded text-sm">
+        <div className="bg-red-100 text-red-700 p-2 rounded text-sm text-center">
           {error}
         </div>
       )}
 
-      <div>
+      {/* <div>
         <label htmlFor="identifier" className="block mb-1 font-medium">
           Email
         </label>
@@ -47,9 +53,31 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           className="w-full px-3 py-2 border rounded"
           required
         />
+      </div> */}
+
+      <div>
+        <label
+          htmlFor="identifier"
+          className="block mb-1 font-semibold text-gray-700"
+        >
+          Email
+        </label>
+        <input
+          type="text"
+          id="email"
+          name="email"
+          value={email}
+          onChange={onChange}
+          className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
+          required
+          autoComplete="email"
+        />
       </div>
       <div>
-        <label htmlFor="identifier" className="block mb-1 font-medium">
+        <label
+          htmlFor="identifier"
+          className="block mb-1 font-semibold text-gray-700"
+        >
           Username
         </label>
         <input
@@ -58,13 +86,17 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           name="username"
           value={username}
           onChange={onChange}
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
           required
+          autoComplete="username"
         />
       </div>
 
       <div>
-        <label htmlFor="identifier" className="block mb-1 font-medium">
+        <label
+          htmlFor="identifier"
+          className="block mb-1 font-semibold text-gray-700"
+        >
           Full Name
         </label>
         <input
@@ -73,13 +105,17 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           name="fullname"
           value={fullname}
           onChange={onChange}
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transitio"
           required
+          autoComplete="fullname"
         />
       </div>
 
       <div>
-        <label htmlFor="password" className="block mb-1 font-medium">
+        <label
+          htmlFor="password"
+          className="block mb-1 font-semibold text-gray-700"
+        >
           Password
         </label>
         <input
@@ -88,18 +124,24 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
           name="password"
           value={password}
           onChange={onChange}
-          className="w-full px-3 py-2 border rounded"
+          className="w-full px-4 py-2 border-2 border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 transitio"
           required
         />
       </div>
 
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition disabled:opacity-50"
+        className="w-full py-2 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white font-bold rounded-lg shadow-lg hover:scale-[1.02] hover:from-blue-600 hover:to-pink-600 transition-all duration-200 active:scale-95"
         disabled={isLoading}
       >
         {isLoading ? "Registering..." : "Register"}
       </button>
+      <p className="text-base text-gray-800 text-center">
+        Already have an account?{" "}
+        <Link to="/" className="text-blue-500 underline">
+          Log In
+        </Link>
+      </p>
     </form>
   );
 };
