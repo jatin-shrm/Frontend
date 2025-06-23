@@ -40,21 +40,6 @@ const RegisterForm: React.FC<RegisterFormProps> = ({
         </div>
       )}
 
-      {/* <div>
-        <label htmlFor="identifier" className="block mb-1 font-medium">
-          Email
-        </label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          value={email}
-          onChange={onChange}
-          className="w-full px-3 py-2 border rounded"
-          required
-        />
-      </div> */}
-
       <div>
         <label
           htmlFor="identifier"
